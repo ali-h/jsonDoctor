@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed&display=swap');
+body, html {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #23272A;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+}
+#app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid transparent;
+}
+
+/* header */
+#header {
+  display: flex;
+  border-bottom: 1px solid #99AAB5;
+  padding: 20px;
+  justify-content: space-between;
+}
+#logo_wrapper{
+  display: flex;
+}
+.logo{
+  cursor: pointer;
+  font-size: 1.6em;
+  padding: 5px 10px 5px 10px;
+}
+.logo__small{
+  margin: 0;
+  border-left: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+.logo__large{
+  margin: 0;
+  border-bottom: 1px solid #ffffff;
+}
+#nav{
+  display: flex;
+  justify-content: flex-end;
+}
+.nav_b{
+  margin: 0;
+  padding: 5px 10px 5px 10px;
+  font-size: 1.6em;
+  cursor: pointer;
+  border-bottom: 1px solid #ffffff;
+}
+.divider{
+  border-bottom: none;
+}
+.nav_selected{
+  color: #7289DA;
+}
+
+/* body */
+#body {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
