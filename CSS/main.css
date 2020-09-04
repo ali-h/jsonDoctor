@@ -31,7 +31,6 @@ body, html {
   flex-grow: 2;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   border: #1e1e1e;
   border-radius: 5px;
   background-color: #2C2F33;
@@ -85,7 +84,6 @@ body, html {
   font-size:1.4em;
   margin: 10px;
   flex-grow: 1;
-  max-width: 50%;
 }
 .code_span {
   margin: 5px 0;
@@ -137,7 +135,7 @@ textarea:focus{
 }
 /* body__controls */
 #body__controls {
-  flex-grow: 1;
+  flex-grow: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
