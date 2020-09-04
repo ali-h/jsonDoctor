@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>jsonDoctor</title>
     <!--scripts-->
     <script src="JS/libs/jquery-3.5.1.min.js"></script>
     <script src="JS/libs/hivejs.min.js"></script>
@@ -27,12 +28,81 @@
           <span class="nav_b">about</span>
         </div>
       </div>
-      <div id="body">
+      <div class="body_app" id="p__broadcast">
         <div id="body__forum">
-          <div class="input__wrapper">         
-            <input id="username" class="input" />
-          </div>
-          <input id="private_key" class="input" />
+          <span class="code_span">
+            <font class="m">hivejs</font>
+            <font class="a">.</font>
+            <font class="p">broadcast</font>
+            <font class="a">.</font>
+            <font class="c">customJson</font>
+            <font class="a">(</font>
+          </span>
+          <span class="code_span">
+            <font>&emsp;</font>
+            <font class="s">"</font>
+            <input class="input_d s" placeholder="wif"/>
+            <font class="s">"</font>
+            <font class="a">,</font>
+          </span>
+          <span class="code_span">
+            <font>&emsp;</font>
+            <font class="a">[</font>
+            <font class="s">"</font>
+            <input class="input_d s" placeholder="requiredAuth"/>
+            <font class="s">"</font>
+            <font class="a">]</font>
+            <font class="a">,</font>
+          </span>
+          <span class="code_span">
+            <font>&emsp;</font>
+            <font class="a">[</font>
+            <font class="s">"</font>
+            <input class="input_d s" placeholder="requiredPostingAuth"/>
+            <font class="s">"</font>
+            <font class="a">]</font>
+            <font class="a">,</font>
+          </span>
+          <span class="code_span">
+            <font>&emsp;</font>
+            <font class="s">"</font>
+            <input class="input_d s" placeholder="id"/>
+            <font class="s">"</font>
+            <font class="a">,</font>
+          </span>
+          <span class="code_span">
+            <font>&emsp;</font>
+            <font class="s">"</font>
+            <textarea class="input_d s textarea" placeholder="json" cols="6" rows="6"></textarea>
+            <font class="s">"</font>
+            <font class="a">,</font>
+          </span>
+          <span class="code_span">
+            <font>&emsp;</font>
+            <font class="f">function</font>
+            <font class="a">(</font>
+            <font class="p">err</font>
+            <font class="a">,&nbsp;</font>
+            <font class="p">result</font>
+            <font class="a">)</font>
+            <font class="a">&nbsp;</font>
+            <font class="a">{</font>
+          </span>
+          <span class="code_span">
+            <font>&emsp;&emsp;</font>
+            <font class="p">console</font>
+            <font class="a">.</font>
+            <font class="c">log</font>
+            <font class="a">(</font>
+            <font class="p">err</font>
+            <font class="a">,&nbsp;</font>
+            <font class="p">result</font>
+            <font class="a">)</font>
+          </span>
+          <span class="code_span">
+            <font class="a">}</font>
+            <font class="a">)</font>
+          </span>
         </div>
         <div id="body__controls">
           
