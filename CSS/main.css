@@ -92,7 +92,7 @@ input:focus{
 textarea:focus{
   outline: none;
 }
-font {
+.code_span span {
   margin: 0 2px;
 }
 .input_d {
