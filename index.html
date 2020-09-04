@@ -29,83 +29,100 @@
         </div>
       </div>
       <div class="body_app" id="p__broadcast">
-        <div id="body__forum">
-          <span class="code_span">
-            <span class="m">hivejs</span>
-            <span class="a">.</span>
-            <span class="p">broadcast</span>
-            <span class="a">.</span>
-            <span class="c">customJson</span>
-            <span class="a">(</span>
-          </span>
-          <span class="code_span">
-            <span>&emsp;</span>
-            <span class="s">"</span>
-            <input class="input_d s" placeholder="wif"/>
-            <span class="s">"</span>
-            <span class="a">,</span>
-          </span>
-          <span class="code_span">
-            <span>&emsp;</span>
-            <span class="a">[</span>
-            <span class="s">"</span>
-            <input class="input_d s" placeholder="requiredAuth"/>
-            <span class="s">"</span>
-            <span class="a">]</span>
-            <span class="a">,</span>
-          </span>
-          <span class="code_span">
-            <span>&emsp;</span>
-            <span class="a">[</span>
-            <span class="s">"</span>
-            <input class="input_d s" placeholder="requiredPostingAuth"/>
-            <span class="s">"</span>
-            <span class="a">]</span>
-            <span class="a">,</span>
-          </span>
-          <span class="code_span">
-            <span>&emsp;</span>
-            <span class="s">"</span>
-            <input class="input_d s" placeholder="id"/>
-            <span class="s">"</span>
-            <span class="a">,</span>
-          </span>
-          <span class="code_span">
-            <span>&emsp;</span>
-            <span class="s">"</span>
-            <textarea class="input_d s textarea" placeholder="json" cols="6" rows="6"></textarea>
-            <span class="s">"</span>
-            <span class="a">,</span>
-          </span>
-          <span class="code_span">
-            <span>&emsp;</span>
-            <span class="f">function</span>
-            <span class="a">(</span>
-            <span class="p">err</span>
-            <span class="a">,&nbsp;</span>
-            <span class="p">result</span>
-            <span class="a">)</span>
-            <span class="a">&nbsp;</span>
-            <span class="a">{</span>
-          </span>
-          <span class="code_span">
-            <span>&emsp;&emsp;</span>
-            <span class="p">console</span>
-            <span class="a">.</span>
-            <span class="c">log</span>
-            <span class="a">(</span>
-            <span class="p">err</span>
-            <span class="a">,&nbsp;</span>
-            <span class="p">result</span>
-            <span class="a">)</span>
-          </span>
-          <span class="code_span">
-            <span class="a">}</span>
-            <span class="a">)</span>
-          </span>
-        </div>
-        <div id="body__controls">
-          
+        <div id="p__broadcast_wrapper">
+          <div id="body__forum">
+            <span class="code_span">
+              <span class="m">hivejs</span>
+              <span class="a">.</span>
+              <span class="p">broadcast</span>
+              <span class="a">.</span>
+              <span class="c">customJson</span>
+              <span class="a">(</span>
+            </span>
+            <span class="code_span">
+              <span>&emsp;</span>
+              <span class="s">"</span>
+              <input class="input_d s" placeholder="Private Key"/>
+              <span class="s">"</span>
+              <span class="a">,</span>
+            </span>
+            <span class="code_span">
+              <span>&emsp;</span>
+              <span class="s">"</span>
+              <input class="input_d s" placeholder="Required Auth"/>
+              <span class="s">"</span>
+              <span class="a">,</span>
+            </span>
+            <span class="code_span">
+              <span>&emsp;</span>
+              <span class="s">"</span>
+              <input class="input_d s" placeholder="ID"/>
+              <span class="s">"</span>
+              <span class="a">,</span>
+            </span>
+            <span class="code_span json_span">
+              <span>&emsp;</span>
+              <span class="s">"</span>
+              <textarea class="input_d s textarea" placeholder="JSON"></textarea>
+              <span class="s">"</span>
+              <span class="a">,</span>
+            </span>
+            <span class="code_span">
+              <span>&emsp;</span>
+              <span class="f">function</span>
+              <span class="a">(</span>
+              <span class="p">err</span>
+              <span class="a">,&nbsp;</span>
+              <span class="p">result</span>
+              <span class="a">)</span>
+              <span class="a">&nbsp;</span>
+              <span class="a">{</span>
+            </span>
+            <span class="code_span">
+              <span>&emsp;&emsp;</span>
+              <span class="p">console</span>
+              <span class="a">.</span>
+              <span class="c">log</span>
+              <span class="a">(</span>
+              <span class="p">err</span>
+              <span class="a">,&nbsp;</span>
+              <span class="p">result</span>
+              <span class="a">)</span>
+            </span>
+            <span class="code_span">
+              <span class="a">}</span>
+              <span class="a">)</span>
+            </span>
+          </div>
+          <div id="body__controls">
+            <div id="top__controls">
+              <div class="top_c_div">
+                <label>
+                  <input class="d_checkbox" type="checkbox" /> Use Keychain
+                </label>
+              </div>
+              <div class=" top_c_div">
+                <div class="select_wrapper">
+                  API
+                  <select class="select_normal">
+                    <optgroup label="HIVE">
+                      <option value="https://anyx.io/">anyx.io</option>
+                      <option value="https://api.hive.blog/">api.hive.blog</option>
+                      <option value="https://api.deathwing.me/">api.deathwing.me</option>
+                    </optgroup>
+                    <optgroup label="STEEM">
+                      <option value="https://api.steemit.com/">api.steemit.com</option>
+                      <option value="https://api.justyy.com/">api.justyy.com</option>
+                      <option value="https://api.steemyy.com/">api.steemyy.com</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div id="bottom__controls">
+              
+            </div>
+          </div>
         </div>
       </div>
     </div>
