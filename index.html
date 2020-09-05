@@ -5,11 +5,14 @@
     <!--scripts-->
     <script src="JS/libs/jquery-3.5.1.min.js"></script>
     <script src="JS/libs/hivejs.min.js"></script>
+    <script src="JS/libs/codejar.js"></script>
+    <script src="JS/libs/prism.js"></script>
     <script src="JS/main.js"></script>
     <script src="JS/broadcast.js"></script>
     <!--css-->
     <link rel="icon" href="ASSETS/icon.png">
     <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="themes/prism.css" href="CSS/libs/prism.css" />
   </head>
   <body>
     <div id="app">
@@ -63,7 +66,8 @@
             <span class="code_span json_span">
               <span>&emsp;</span>
               <span class="s">"</span>
-              <textarea class="input_d s textarea" placeholder="JSON"></textarea>
+              <!-- code editor -->
+              <div id="editor" class="input_d"></div>
               <span class="s">"</span>
               <span class="a">,</span>
             </span>
@@ -97,13 +101,17 @@
           <div id="body__controls">
             <div id="top__controls">
               <div class="top_c_div">
-                <label>
-                  <input class="d_checkbox" type="checkbox" /> Use Keychain
-                </label>
-              </div>
-              <div class=" top_c_div">
                 <div class="select_wrapper">
-                  API
+                  Use Keychain
+                  <select class="select_normal">
+                    <option>No</option>
+                    <option>Yes</option>
+                  </select>
+                </div>
+              </div>
+              <div class="top_c_div">
+                <div class="select_wrapper">
+                  RPC Server
                   <select class="select_normal">
                     <optgroup label="HIVE">
                       <option value="https://anyx.io/">anyx.io</option>
@@ -118,9 +126,41 @@
                   </select>
                 </div>
               </div>
-            </div>
-            <div id="bottom__controls">
-              
+              <div class="top_c_div">
+                <div class="select_wrapper">
+                  Load Template
+                  <select class="select_normal">
+                      <option>None</option>
+                      <option value="hive-engine">Hive-Engine</option>
+                      <option value="steem-engine">Steem-Engine</option>
+                      <option value="blog-operations">Blog Operations</option>
+                  </select>
+                  <select class="select_normal" disabled>
+                    <option>None</option>
+                  </select>
+                </div>
+              </div>
+              <div class="top_c_div">
+                <div class="select_wrapper">
+                  Required Auth Type
+                  <select class="select_normal">
+                      <option value="posting">Posting</option>
+                      <option value="active">Active</option>
+                  </select>
+                </div>
+              </div>
+              <div class="top_c_div">
+                <div class="select_wrapper">
+                  Timer
+                  <select class="select_normal">
+                    <option>None</option>
+                    <option>3 Seconds</option>
+                    <option>5 Seconds</option>
+                    <option>10 Seconds</option>
+                    <option>30 Seconds</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
