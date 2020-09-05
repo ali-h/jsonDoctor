@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 body, html {
   margin: 0;
   width: 100%;
@@ -24,17 +25,18 @@ body, html {
 /* body */
 .body_app {
   flex-grow: 2;
-  padding: 20px;
+  padding: 10px;
   display: flex;
 }
 #p__broadcast_wrapper {
-  flex-grow: 2;
+  flex-basis: 100%;
+  justify-content: flex-start;
   display: flex;
   flex-wrap: wrap;
   border: #1e1e1e;
   border-radius: 5px;
   background-color: #2C2F33;
-  padding: 10px 20px;
+  padding: 0 5px;
 }
 /* header components */
 #logo_wrapper{
@@ -43,8 +45,8 @@ body, html {
 }
 .logo{
   cursor: pointer;
-  font-size: 1.6em;
-  padding: 5px 15px 5px 15px;
+  font-size: 26px;
+  padding: 5px 15px;
 }
 .logo__small{
   margin: 0;
@@ -64,7 +66,7 @@ body, html {
 .nav_b{
   margin: 0;
   padding: 5px 10px 5px 10px;
-  font-size: 1.6em;
+  font-size: 26px;
   cursor: pointer;
   border-bottom: 1px solid #d4d4d4;
 }
@@ -81,9 +83,8 @@ body, html {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  font-size:1.4em;
+  font-size: 20px;
   margin: 10px;
-  flex-grow: 1;
 }
 .code_span {
   margin: 5px 0;
@@ -103,13 +104,21 @@ textarea:focus{
   border: 1px solid #9cdcfe;
   border-radius: 5px;
   margin: 0 2px;
-  font-size: 1em;
+  font-size: 20px;
   padding: 5px;
   width: 500px;
   font-family: 'Encode Sans Condensed', sans-serif;
 }
-.textarea {
-  resize: none;
+#editor {
+  min-height: 130px;
+  font-family: "Courier New", monospace;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: normal;
+  line-height: 22px;
+  tab-size: 4;
+  overflow-y: auto !important;
+  resize: none !important;
 }
 .json_span {
   flex-grow: 2;
@@ -140,28 +149,20 @@ textarea:focus{
   flex-direction: column;
   justify-content: space-between;
   margin: 10px;
-  font-size: 1.4em;
+  font-size: 20px;
 }
-.top_c_div {
-  margin-bottom: 10px;
-  display: flex;
-}
-/* checkbox */
-.d_checkbox{
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: bottom;
-}
-label {
-  cursor: pointer;
-}
-#top__controls {
+#top__controls{
   flex-grow: 2;
+  margin: 5px 0;
   display: flex;
   flex-direction: column;
   border: 2px solid #1e1e1e;
   border-radius: 5px;
   padding: 20px;
+}
+.top_c_div {
+  margin-bottom: 20px;
+  display: flex;
 }
 select:focus{
   outline: none;
@@ -172,13 +173,14 @@ select:focus{
 }
 .select_normal {
   vertical-align: bottom;
-  font-size: 1em;
+  font-size: 20px;
   cursor: pointer;
   font-family: 'Encode Sans Condensed', sans-serif;
-  margin: 0 15px;
-  border: 1px solid #1e1e1e;
+  margin: 0 0 0 10px;
+  border: none;
   border-radius: 5px;
   background-color: #1e1e1e;
   color: #d4d4d4;
   padding: 5px;
+  padding-right: 10px;
 }
