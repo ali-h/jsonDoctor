@@ -99,6 +99,9 @@ textarea:focus{
 .code_span span {
   margin: 0 2px;
 }
+input::placeholder {
+  color: #a9a9a9;
+}
 .input_d {
   background-color: #2C2F33;
   border: 1px solid #9cdcfe;
@@ -110,6 +113,7 @@ textarea:focus{
   font-family: 'Encode Sans Condensed', sans-serif;
 }
 #editor {
+  position: relative;
   min-height: 130px;
   font-family: "Courier New", monospace;
   font-weight: 400;
@@ -119,6 +123,10 @@ textarea:focus{
   tab-size: 4;
   overflow-y: auto !important;
   resize: none !important;
+}
+.editor_empty {
+  color: #a9a9a9 !important;
+  font-family: 'Encode Sans Condensed', sans-serif !important;
 }
 .json_span {
   flex-grow: 2;
