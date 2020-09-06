@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('fonts.css');
 body, html {
   margin: 0;
   width: 100%;
@@ -30,9 +29,7 @@ body, html {
 }
 #p__broadcast_wrapper {
   flex-basis: 100%;
-  justify-content: flex-start;
   display: flex;
-  flex-wrap: wrap;
   border: #1e1e1e;
   border-radius: 6px;
   background-color: #2C2F33;
@@ -79,6 +76,7 @@ body, html {
 
 /* body components */
 #body__forum {
+  width: 45%;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -149,15 +147,15 @@ input::placeholder {
 }
 /* body__controls */
 #body__controls {
-  flex-grow: 2;
+  width: 55%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 10px;
   font-size: 20px;
 }
-#top__controls{
-  flex-grow: 2;
+#top__controls, #bottom__controls {
   margin: 5px 0;
   display: flex;
   flex-direction: column;
@@ -165,26 +163,39 @@ input::placeholder {
   border-radius: 6px;
   padding: 20px;
 }
+#bottom__controls {
+  flex-grow: 2;
+}
 .top_c_div {
   margin-bottom: 15px;
   display: flex;
 }
+.nomargin {
+  margin: 0 !important;
+}
+.crossb {
+  border-radius: 50px !important;
+}
 .select_wrapper {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .select_normal {
   vertical-align: bottom;
   font-size: 20px;
   cursor: pointer;
   font-family: 'Encode Sans Condensed', sans-serif;
-  margin: 0 0 0 10px;
   border: none;
   border-radius: 6px;
   background-color: #1e1e1e;
   color: #ffffff;
   padding: 5px;
-  padding-right: 10px;
+}
+.tbs {
+  margin: 4px 8px !important;
+  padding: 5px 10px !important;
+  margin-left: 0 !important;
 }
 .button_g{
   font-size: 20px;
@@ -202,4 +213,8 @@ input::placeholder {
 }
 .hidden {
   display: none;
+}
+.select_wrapper span {
+  margin: 0;
+  margin-right: 10px;
 }
