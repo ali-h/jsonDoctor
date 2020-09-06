@@ -104,12 +104,12 @@ input::placeholder {
   margin: 0 2px;
   font-size: 20px;
   padding: 5px;
-  width: 550px;
+  width: 540px;
   font-family: 'Encode Sans Condensed', sans-serif;
 }
 #editor {
   position: relative;
-  min-height: 130px;
+  min-height: 200px;
   font-family: "Courier New", monospace;
   font-weight: 400;
   font-size: 18px;

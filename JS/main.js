@@ -1,7 +1,7 @@
 // on page ready
 $(() => {
   $("body").removeClass("hidden")
-
+  
   // json editor config
   const editor = document.querySelector("#editor");
   const highlight = editor => {
@@ -11,7 +11,16 @@ $(() => {
     hljs.highlightBlock(editor)
   }
   const editor_json = CodeJar(editor, highlight, {tab: " ".repeat(2)});
-  
+  function AdjustEditorHeight(height) {
+    if (height < 200)
+      AdjustEditorHeight($("#editor").height())
+    else
+      $("#editor").css("max-height", height + "px")
+  }
+  setTimeout(() => {
+    AdjustEditorHeight($("#editor").height())
+  }, 1);
+
   // create editor placeholder
   var isEdited = false
   $("#editor").focus(function() {
@@ -28,6 +37,7 @@ $(() => {
       isEdited = false
     }
   })
+  
   // template functions
   function updateJson(json_id = null, json = null, required_auth_type = null) {
     $("#editor").focus()
@@ -95,9 +105,10 @@ $(() => {
       updateJson(this_template.json_id, template, this_template.required_auth_type)
     }
     else
-      updateJson(null, null, null)
+      updateJson("", null, "posting")
   })
 
+  // sub_template functioning
   $(document).on("click", ".sub_template_button", function() {
     var selection = $(this).text()
     var newJson = JSON.stringify(templates[current_template.name].json)
