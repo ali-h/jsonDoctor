@@ -169,7 +169,7 @@ input::placeholder {
   padding: 20px;
 }
 .top_c_div {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
 }
 select:focus{
