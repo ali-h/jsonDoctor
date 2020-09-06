@@ -1,2 +1,2 @@
 # jsonDoctor
-A tool to broadcast and stream incoming custom_json transactions on Hive/Steem Blockchain
+A tool to broadcast and stream incoming custom_json transactions on Hive Blockchain
