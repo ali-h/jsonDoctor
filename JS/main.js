@@ -190,4 +190,7 @@ $(() => {
     }
     updateJson(null, JSON.stringify(newJson, null, "  "), null)
   })
+  $("#broadcast").click(function() {
+    
+  })
 });
