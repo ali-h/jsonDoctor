@@ -59,7 +59,7 @@
             <span class="code_span">
               <span>&emsp;</span>
               <span class="s">"</span>
-              <input class="input_d s" placeholder="ID"/>
+              <input id="json_id" class="input_d s" placeholder="ID"/>
               <span class="s">"</span>
               <span class="a">,</span>
             </span>
@@ -103,7 +103,7 @@
               <div class="top_c_div nomargin" id="temp_div">
                 <div class="select_wrapper">
                   <span>Templates</span>
-                  <button class="select_normal template_button tbs">Hive-Engine</button>
+                  <button class="select_normal template_button tbs">Hive Engine</button>
                   <button class="select_normal template_button tbs">Blog Operations</button>
                   <button class="select_normal template_button tbs">Scot Claim Token</button>
                   <button class="select_normal template_button tbs crossb">X</button>
@@ -122,33 +122,26 @@
               <div class="top_c_div">
                 <div class="select_wrapper">
                   <span>Use Keychain</span>
-                  <select class="select_normal">
-                    <option>No</option>
-                    <option>Yes</option>
+                  <select class="select_normal" id="use_keychain">
+                    <option value="true">No</option>
+                    <option value="false">Yes</option>
                   </select>
                 </div>
               </div>
               <div class="top_c_div">
                 <div class="select_wrapper">
                   <span>RPC Server</span>
-                  <select class="select_normal">
-                    <optgroup label="HIVE">
+                  <select class="select_normal" id="rpc_server">
                       <option value="https://anyx.io/">anyx.io</option>
                       <option value="https://api.hive.blog/">api.hive.blog</option>
                       <option value="https://api.deathwing.me/">api.deathwing.me</option>
-                    </optgroup>
-                    <optgroup label="STEEM">
-                      <option value="https://api.steemit.com/">api.steemit.com</option>
-                      <option value="https://api.justyy.com/">api.justyy.com</option>
-                      <option value="https://api.steemyy.com/">api.steemyy.com</option>
-                    </optgroup>
                   </select>
                 </div>
               </div>              
               <div class="top_c_div">
                 <div class="select_wrapper">
                   <span>Required Auth Type</span>
-                  <select class="select_normal">
+                  <select class="select_normal" id="required_auth_type">
                       <option value="posting">Posting</option>
                       <option value="active">Active</option>
                   </select>
@@ -157,16 +150,16 @@
               <div class="top_c_div nomargin">
                 <div class="select_wrapper">
                   <span>Timer</span>
-                  <select class="select_normal">
-                    <option>None</option>
-                    <option>3 Seconds</option>
-                    <option>5 Seconds</option>
-                    <option>10 Seconds</option>
-                    <option>30 Seconds</option>
+                  <select class="select_normal" id="timer">
+                    <option value="0">None</option>
+                    <option value="3000">3 Seconds</option>
+                    <option value="5000">5 Seconds</option>
+                    <option value="10000">10 Seconds</option>
+                    <option value="30000">30 Seconds</option>
                   </select>
                 </div>
                 <div class="select_wrapper">
-                  <button class="button_g">Broadcast</button>
+                  <button id="broadcast" class="button_g">Broadcast</button>
                 </div>
               </div>
             </div>
