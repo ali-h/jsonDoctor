@@ -3,14 +3,14 @@ $(() => {
   $("body").removeClass("hidden")
 
   // json editor config
-  const editor = document.querySelector('#editor');
+  const editor = document.querySelector("#editor");
   const highlight = editor => {
     // highlight.js does not trims old tags,
     // let's do it by this hack.
     editor.textContent = editor.textContent
     hljs.highlightBlock(editor)
   }
-  const editor_json = CodeJar(editor, highlight, {tab: ' '.repeat(2)});
+  const editor_json = CodeJar(editor, highlight, {tab: " ".repeat(2)});
   
   // create editor placeholder
   var isEdited = false
@@ -32,35 +32,44 @@ $(() => {
   function updateJson(json_id = null, json = null, required_auth_type = null) {
     $("#editor").focus()
     editor_json.updateCode(json)
+    if (required_auth_type != null) {
+      $("#required_auth_type").val(required_auth_type)
+    }
+    if (json_id != null) {
+      $("#json_id").val(json_id)
+    }
   }
   var templates = {
-    "Hive-Engine" : {
+    "Hive Engine" : {
+      name: "Hive Engine",
       json_id: "ssc-mainnet-hive",
       json: {"contractName":"","contractAction":"","contractPayload":{}},
-      required_auth_type: "Active",
-      options: ["Transfer", "Stake", "Unstake", "Cancel Unstake", "Delegate", "Undelegate", "Issue", "Buy", "Sell", "Cancel Buy/Sell"]
+      required_auth_type: "active",
+      options: ["Transfer", "Stake", "Unstake", "Issue", "Buy", "Sell", "Cancel"]
     },
     "Blog Operations" : {
+      name: "Blog Operations",
       json_id: "follow",
       json: ["follow",{"follower":"","following":"","what":[""]}],
-      required_auth_type: "Posting",
+      required_auth_type: "posting",
       options: ["Follow", "Unfollow", "Mute"]
     },
     "Scot Claim Token" : {
+      name: "Scot Claim Token",
       json_id: "scot-claim-token",
       json: [{"symbol":""}],
-      required_auth_type: "Posting",
-      options: ["NEOAX","PAL","LEO","CCC"]
+      required_auth_type: "posting",
+      options: ["NEOXAG","PAL","LEO","CCC"]
     }
   }
   var current_template
-  var template_button = $(".template_button")
-  var sub_templates = $("#sub_templates")
-  var sub_template_button = $(".sub_template_button")
 
-  template_button.click(function() {
+  $(document).on("click", ".template_button", function() {
     var selection = $(this).text()
     var this_template = templates[selection]
+    current_template = this_template
+    var sub_templates = $("#sub_templates")
+
     // adding sub-templates
     if(selection !== "X" && this_template.options.length > 0) {
       sub_templates.html("")
@@ -82,8 +91,92 @@ $(() => {
     }
 
     if(selection !== "X") {
-      template = JSON.stringify(this_template.json, null, '  ')
+      template = JSON.stringify(this_template.json, null, "  ")
       updateJson(this_template.json_id, template, this_template.required_auth_type)
     }
+    else
+      updateJson(null, null, null)
+  })
+
+  $(document).on("click", ".sub_template_button", function() {
+    var selection = $(this).text()
+    var newJson = JSON.stringify(templates[current_template.name].json)
+    newJson = JSON.parse(newJson)
+    if (selection != "X") {
+      switch(current_template.name) {
+        case "Hive Engine":
+          var contractName = "tokens", contractAction, contractPayload
+          contractAction = selection.split(" ")
+          if (contractAction.length > 1)
+            contractAction = contractAction[0].toLowerCase() + contractAction[1]
+          else
+            contractAction = contractAction[0].toLowerCase()
+          switch(selection) {
+            case "Buy":
+            case "Sell":
+              contractName = "market"
+              contractPayload = {
+                "symbol": "",
+                "quantity": "",
+                "price": ""
+              }
+              break;
+            case "Cancel":
+              contractName = "market"
+              contractPayload = {
+                "type": "",
+                "id": ""
+              }
+              break;
+            case "Transfer":
+              contractPayload = {
+                "symbol": "",
+                "to": "",
+                "quantity": "",
+                "memo": ""
+              }
+              break;
+            case "Stake":
+            case "Issue":
+              contractPayload = {
+                "to": "",
+                "symbol": "",
+                "quantity": ""
+              }
+              break;
+            case "Unstake":
+              contractPayload = {
+                "symbol": "",
+                "quantity": ""
+              }
+              break;
+          }
+          newJson.contractName = contractName
+          newJson.contractAction = contractAction
+          newJson.contractPayload = contractPayload
+          break;
+
+        case "Blog Operations":
+          var action
+          switch(selection) {
+            case "Follow":
+              action = "blog"
+              break;
+            case "Unfollow":
+              action = ""
+              break;
+            case "Mute":
+              action = "ignore"
+              break;
+          }
+          newJson[1].what[0] = action
+          break;
+
+        case "Scot Claim Token":
+          newJson[0].symbol = selection
+          break;
+      }
+    }
+    updateJson(null, JSON.stringify(newJson, null, "  "), null)
   })
 });
