@@ -12,9 +12,6 @@ $(() => {
   }
   const editor_json = CodeJar(editor, highlight, {tab: " ".repeat(2)});
   function AdjustEditorHeight(height) {
-    if (height < 200)
-      AdjustEditorHeight($("#editor").height())
-    else
       $("#editor").css("max-height", height + "px")
   }
   setTimeout(() => {
