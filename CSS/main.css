@@ -103,6 +103,10 @@ input:focus, select:focus, textarea:focus, button:focus{
 input::placeholder {
   color: #a9a9a9;
 }
+.input_d:disabled {
+  background-color: #1e1e1e80;
+  cursor: not-allowed;
+}
 .input_d {
   background-color: #2C2F33;
   border: 1px solid #9cdcfe;
@@ -173,7 +177,7 @@ input::placeholder {
   flex-grow: 2;
 }
 .top_c_div {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: flex;
 }
 .nomargin {
@@ -217,10 +221,42 @@ input::placeholder {
 .button_g:hover {
   background-color: #7274da;
 }
+.button_g:disabled{
+  background-color: #7289da21;
+}
 .hidden {
   display: none;
 }
 .select_wrapper span {
   margin: 0;
   margin-right: 10px;
+}
+#broadcast_log_wr {
+  flex-grow: 2;
+  margin: 0;
+  margin-top: 10px;
+}
+#broadcast_log {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier New", monospace;
+  width: 100%;
+  padding: 5px;
+  font-size: 13.8px;
+  overflow: auto;
+}
+.log {
+  display: flex;
+  margin: 1px 0;
+}
+.log span{
+  margin: 0 5px;
+}
+.log span:nth-child(1){
+  margin: 0 5px 0 0;
+}
+.log_heading {
+  color: yellow;
+  font-size: 20px;
 }
