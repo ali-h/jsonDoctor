@@ -1,5 +1,5 @@
 // on page ready
-$(window).on('load', function (e){
+$(window).bind("load", function() {
   var page_num = 0
   var getPages
   (getPages = function() {
