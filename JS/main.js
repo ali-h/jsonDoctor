@@ -1,5 +1,5 @@
 // on page ready
-$(() => {
+$(window).on('load', function (e){
   var page_num = 0
   var getPages
   (getPages = function() {
@@ -192,6 +192,7 @@ $(() => {
         else
           $("#private_key").removeAttr("disabled")
       })
+      // broadcast function
       $("#broadcast").click(function() {
         $(this).attr("disabled", true)
         var data = {
@@ -234,4 +235,5 @@ $(() => {
       getPages()
     }
   })()
-});
+  $("#app").removeClass("hidden")
+})
