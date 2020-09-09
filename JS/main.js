@@ -1,8 +1,8 @@
 // on page ready
 $(window).bind("load", function() {
+  // def page num
   var page_num = 0
-  var getPages
-  (getPages = function() {
+  var getPages = function() {
     if(page_num == 1) {
       $("#p__broadcast").removeClass("hidden")
       $("#p__stream").addClass("hidden")
@@ -211,13 +211,9 @@ $(window).bind("load", function() {
         })
       })
 
-      function AdjustHeights(editor, log) {
-          $("#editor").css("max-height", editor + "px")
-          $("#broadcast_log").css("max-height", log + "px")
-      }
-      setTimeout(() => {
-        AdjustHeights($("#editor").height(), $("#broadcast_log").height())
-      }, 100);
+      // set Heights for overflow components
+      $("#editor").css("max-height", $("#editor").height() + "px")
+      $("#broadcast_log").css("max-height", $("#broadcast_log").height() + "px")
 
       function adjust_log_scroll() {
         $('#broadcast_log').scrollTop($('#broadcast_log')[0].scrollHeight)
@@ -234,6 +230,65 @@ $(window).bind("load", function() {
       page_num = 1
       getPages()
     }
-  })()
-  $("#app").removeClass("hidden")
+  }
+
+  // wait for the webfonts to load page
+  function waitForWebfonts(fonts, callback) {
+    var loadedFonts = 0;
+    for(var i = 0, l = fonts.length; i < l; ++i) {
+        (function(font) {
+            var node = document.createElement('span');
+            // Characters that vary significantly among different fonts
+            node.innerHTML = 'giItT1WQy@!-/#';
+            // Visible - so we can measure it - but not on the screen
+            node.style.position      = 'absolute';
+            node.style.left          = '-10000px';
+            node.style.top           = '-10000px';
+            // Large font size makes even subtle changes obvious
+            node.style.fontSize      = '300px';
+            // Reset any font properties
+            node.style.fontFamily    = 'sans-serif';
+            node.style.fontVariant   = 'normal';
+            node.style.fontStyle     = 'normal';
+            node.style.fontWeight    = 'normal';
+            node.style.letterSpacing = '0';
+            document.body.appendChild(node);
+
+            // Remember width with no applied web font
+            var width = node.offsetWidth;
+
+            node.style.fontFamily = font + ', sans-serif';
+
+            var interval;
+            function checkFont() {
+                // Compare current width with original width
+                if(node && node.offsetWidth != width) {
+                    ++loadedFonts;
+                    node.parentNode.removeChild(node);
+                    node = null;
+                }
+
+                // If all fonts have been loaded
+                if(loadedFonts >= fonts.length) {
+                    if(interval) {
+                        clearInterval(interval);
+                    }
+                    if(loadedFonts == fonts.length) {
+                        callback();
+                        return true;
+                    }
+                }
+            };
+
+            if(!checkFont()) {
+                interval = setInterval(checkFont, 50);
+            }
+        })(fonts[i]);
+    }
+  }
+  waitForWebfonts(['Encode Sans Condensed', 'Courier New'], function() {
+    // $("#app").removeClass("hidden")
+    // $("#loader").addClass("hidden")
+    // getPages()
+  })
 })
