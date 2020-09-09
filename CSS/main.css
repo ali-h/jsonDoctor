@@ -225,7 +225,7 @@ input::placeholder {
   background-color: #7289da21;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .select_wrapper span {
   margin: 0;
