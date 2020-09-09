@@ -287,8 +287,8 @@ $(window).bind("load", function() {
     }
   }
   waitForWebfonts(['Encode Sans Condensed', 'Courier New'], function() {
-    // $("#app").removeClass("hidden")
-    // $("#loader").addClass("hidden")
-    // getPages()
+    $("#app").removeClass("hidden")
+    $("#loader").addClass("hidden")
+    getPages()
   })
 })
