@@ -7,8 +7,9 @@
     <script src="JS/libs/hive.min.js"></script>
     <script src="JS/libs/highlight.pack.js"></script>
     <script src="JS/libs/codejar.js"></script>
-    <script src="JS/main.js"></script>
+    <script src="JS/stream.js"></script>
     <script src="JS/broadcast.js"></script>
+    <script src="JS/main.js"></script>
     <!--css-->
     <link rel="icon" href="ASSETS/icon.png">
     <link rel="stylesheet" href="CSS/main.css" />
@@ -29,7 +30,7 @@
           <span class="nav_b">about</span>
         </div>
       </div>
-      <div class="body_app" id="p__broadcast">
+      <div class="body_app hidden" id="p__broadcast">
         <div id="p__broadcast_wrapper">
           <div id="body__forum">
             <span class="code_span">
@@ -121,8 +122,8 @@
                 <div class="select_wrapper">
                   <span>Use Keychain</span>
                   <select class="select_normal" id="use_keychain">
-                    <option value="true">No</option>
-                    <option value="false">Yes</option>
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
                   </select>
                 </div>
               </div>
@@ -145,7 +146,7 @@
                   </select>
                 </div>
               </div>
-              <div class="top_c_div nomargin">
+              <div class="top_c_div">
                 <div class="select_wrapper">
                   <span>Timer</span>
                   <select class="select_normal" id="timer">
@@ -158,6 +159,13 @@
                 </div>
                 <div class="select_wrapper">
                   <button id="broadcast" class="button_g">Broadcast</button>
+                </div>
+              </div>
+              <div class="top_c_div" id="broadcast_log_wr">
+                <div id="broadcast_log">
+                  <div class="log">
+                    <span class="log_heading">log</span>
+                  </div>
                 </div>
               </div>
             </div>
