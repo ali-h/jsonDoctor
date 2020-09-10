@@ -264,7 +264,7 @@ input::placeholder {
   flex-direction: column;
   font-family: "Courier New", monospace;
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   font-size: 13.8px;
   overflow: auto;
 }
@@ -273,12 +273,19 @@ input::placeholder {
   margin: 1px 0;
 }
 .log span{
-  margin: 0 5px;
+  margin: 0 15px;
+  white-space: normal;
+  text-overflow: ellipsis;
 }
 .log span:nth-child(1){
-  margin: 0 5px 0 0;
+  margin: 0 15px 0 0;
 }
-.log_heading {
-  color: yellow;
-  font-size: 20px;
+.log_err {
+  color: #f44747;
+}
+.log_succ {
+  color: #039403;
+}
+.log_msg {
+  color: #e6cd2d;
 }
