@@ -52,8 +52,13 @@ $(window).bind("load", function() {
         }
 
         var log_num_f
-        if (log_num < 100)
-          log_num_f = "00" + log_num
+        if(log_num < 100) {
+          var zeros = "00"
+          if(log_num > 9) {
+            zeros = "0"
+          }
+          log_num_f = zeros + log_num
+        }
         else
           log_num_f = log_num
 
