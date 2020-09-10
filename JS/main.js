@@ -50,9 +50,16 @@ $(window).bind("load", function() {
         else if(status == "warning") {
           css_class = "log_msg"
         }
+
+        var log_num_f
+        if (log_num < 100)
+          log_num_f = "00" + log_num
+        else
+          log_num_f = log_num
+
         $("#broadcast_log").append(
           `<div class="log">
-            <span>`+log_num+`</span>
+            <span>`+log_num_f+`</span>
             <span class="`+css_class+`">`+status+`</span>
             <span class="log_msg">`+msg+`</span>
           </div>`
