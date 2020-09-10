@@ -4,6 +4,7 @@ $(window).bind("load", function() {
   var page_num = 0
   var getPages = function() {
     if(page_num == 1) {
+      var log_num = 0
       $("#p__broadcast").removeClass("hidden")
       $("#p__stream").addClass("hidden")
       $("#p__about").addClass("hidden")
@@ -33,6 +34,38 @@ $(window).bind("load", function() {
           isEdited = false
         }
       })
+
+      function log(status, msg) {
+        var css_class
+        log_num++
+        if(status == "success") {
+          css_class = "log_succ"
+          if(typeof(msg) == 'object') {
+            msg = msg.msg + ' <a target="_blank" href="https://hiveblocks.com/tx/' + msg.tx_id + '">' + msg.tx_id + '</a>'
+          }
+        }
+        else if(status == "failure") {
+          css_class = "log_err"
+        }
+        else if(status == "warning") {
+          css_class = "log_msg"
+        }
+        $("#broadcast_log").append(
+          `<div class="log">
+            <span>`+log_num+`</span>
+            <span class="`+css_class+`">`+status+`</span>
+            <span class="log_msg">`+msg+`</span>
+          </div>`
+        )
+      }
+      // set Heights for overflow components
+      var editor_height = $("#editor").height()
+        $("#editor").css("max-height", editor_height + "px")
+      var broadcast_log_height = $("#broadcast_log").height()
+      function adjustHeight(broadcast_log_height) {
+        $("#broadcast_log").css("max-height", broadcast_log_height + "px")
+      }
+      adjustHeight(broadcast_log_height)
       
       // template functions
       function updateJson(json_id = null, json = null, required_auth_type = null) {
@@ -94,6 +127,7 @@ $(window).bind("load", function() {
           sub_templates.addClass("hidden")
           $("#sub_t_heading").addClass("hidden")
           $("#sub_t_heading").parent(".top_c_div").addClass("hidden")
+          adjustHeight(broadcast_log_height)
         }
 
         if(selection !== "X") {
@@ -102,6 +136,12 @@ $(window).bind("load", function() {
         }
         else
           updateJson("", null, "posting")
+
+        // adjust height again if body resized
+        var html = $("#broadcast_log").html()
+        $("#broadcast_log").html("")
+        adjustHeight($("#broadcast_log").height())
+        $("#broadcast_log").html(html)
       })
 
       // sub_template functioning
@@ -187,10 +227,22 @@ $(window).bind("load", function() {
         updateJson(null, JSON.stringify(newJson, null, "  "), null)
       })
       $("#use_keychain").change(function() {
-        if ($(this).val() == "true")
-          $("#private_key").attr("disabled", true)
-        else
+        if ($(this).val() == "true") {
+          try {
+          hive_keychain.requestHandshake(function(res) {
+            log("success", "hive_keychain use enabled")
+            $("#private_key").attr("disabled", true)
+          })
+          } catch(err) {
+            log("failure", "hive_keychain handshake failed")
+            $("#private_key").removeAttr("disabled")
+            $(this).val("false")
+          }
+        }
+        else {
           $("#private_key").removeAttr("disabled")
+          log("success", "hive_keychain use disabled")
+        }
       })
       // broadcast function
       $("#broadcast").click(function() {
@@ -208,17 +260,22 @@ $(window).bind("load", function() {
         broadcast(data, function(status, res) {
           log(status, res)
           popup(status, res)
+          $(this).removeAttr("disabled")
         })
       })
-
-      // set Heights for overflow components
-      $("#editor").css("max-height", $("#editor").height() + "px")
-      $("#broadcast_log").css("max-height", $("#broadcast_log").height() + "px")
 
       function adjust_log_scroll() {
         $('#broadcast_log').scrollTop($('#broadcast_log')[0].scrollHeight)
       }
       $("#broadcast_log").bind("DOMSubtreeModified", adjust_log_scroll)
+
+      try {
+        hive_keychain.requestHandshake(function(res) {
+          log("success", "hive_keychain connected")
+        })
+      } catch(err) {
+        log("failure", "hive_keychain handshake failed")
+      }
     }
     else if (page_num == 2) {
 
@@ -226,15 +283,12 @@ $(window).bind("load", function() {
     else if (page_num == 3) {
 
     }
-    else if (page_num == 0) {
-      page_num = 1
-      getPages()
-    }
   }
 
   // wait for the webfonts to load page
   function waitForWebfonts(fonts, callback) {
     var loadedFonts = 0;
+    var onetime = 0
     for(var i = 0, l = fonts.length; i < l; ++i) {
         (function(font) {
             var node = document.createElement('span');
@@ -274,8 +328,11 @@ $(window).bind("load", function() {
                         clearInterval(interval);
                     }
                     if(loadedFonts == fonts.length) {
+                      if (onetime != 1) {
+                        onetime = 1
                         callback();
                         return true;
+                      }
                     }
                 }
             };
@@ -289,6 +346,7 @@ $(window).bind("load", function() {
   waitForWebfonts(['Encode Sans Condensed', 'Courier New'], function() {
     $("#app").removeClass("hidden")
     $("#loader").addClass("hidden")
+    page_num = 1
     getPages()
   })
 })
