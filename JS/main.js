@@ -38,19 +38,15 @@ $(window).bind("load", function() {
       function log(status, msg) {
         var css_class
         log_num++
-        if(status == "success") {
-          css_class = "log_succ"
+        if(status == 0) {
+          css_class = "log_warn"
           if(typeof(msg) == 'object') {
-            msg = msg.msg + ' <a target="_blank" href="https://hiveblocks.com/tx/' + msg.tx_id + '">' + msg.tx_id + '</a>'
+            msg = msg.msg + ' <a class="tx_id" target="_blank" href="https://hiveblocks.com/tx/' + msg.tx_id + '">' + msg.tx_id.substr(0, 8) + '</a>'
           }
         }
-        else if(status == "failure") {
+        else if(status == 1) {
           css_class = "log_err"
         }
-        else if(status == "warning") {
-          css_class = "log_msg"
-        }
-
         var log_num_f
         if(log_num < 100) {
           var zeros = "00"
@@ -65,8 +61,7 @@ $(window).bind("load", function() {
         $("#broadcast_log").append(
           `<div class="log">
             <span>`+log_num_f+`</span>
-            <span class="`+css_class+`">`+status+`</span>
-            <span class="log_msg">`+msg+`</span>
+            <span class="`+css_class+`">`+msg+`</span>
           </div>`
         )
       }
@@ -242,37 +237,39 @@ $(window).bind("load", function() {
         if ($(this).val() == "true") {
           try {
           hive_keychain.requestHandshake(function(res) {
-            log("success", "hive_keychain use enabled")
+            log(0, "hive_keychain use enabled.")
             $("#private_key").attr("disabled", true)
           })
           } catch(err) {
-            log("failure", "hive_keychain handshake failed")
+            log(1, "ERR: hive_keychain handshake failed.")
             $("#private_key").removeAttr("disabled")
             $(this).val("false")
           }
         }
         else {
           $("#private_key").removeAttr("disabled")
-          log("success", "hive_keychain use disabled")
+          log(0, "hive_keychain use disabled.")
         }
       })
       // broadcast function
       $("#broadcast").click(function() {
         $(this).attr("disabled", true)
+        var json = editor_json.toString()
+        if (json == "JSON" && $("#editor").attr("class").includes("editor_empty")) {
+          json = ""
+        }
         var data = {
           private_key : $("#private_key").val(),
           username : $("#username").val(),
           json_id : $("#json_id").val(),
-          json : JSON.stringify(editor_json.toString()),
-          required_auth_type : $("required_auth_type").val(),
+          json : json,
+          required_auth_type : $("#required_auth_type").val(),
           use_keychain : $("#use_keychain").val(),
           rpc_server : $("#rpc_server").val(),
-          timer : $("#timer").val()
         }
         broadcast(data, function(status, res) {
           log(status, res)
-          popup(status, res)
-          $(this).removeAttr("disabled")
+          $("#broadcast").removeAttr("disabled")
         })
       })
 
@@ -283,10 +280,10 @@ $(window).bind("load", function() {
 
       try {
         hive_keychain.requestHandshake(function(res) {
-          log("success", "hive_keychain connected")
+          log(0, "hive_keychain connected.")
         })
       } catch(err) {
-        log("failure", "hive_keychain handshake failed")
+        log(1, "ERR: hive_keychain handshake failed.")
       }
     }
     else if (page_num == 2) {
