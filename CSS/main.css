@@ -201,6 +201,7 @@ input::placeholder {
 .top_c_div {
   margin-bottom: 10px;
   display: flex;
+  justify-content: space-between;
 }
 .nomargin {
   margin: 0 !important;
@@ -233,7 +234,6 @@ input::placeholder {
   font-size: 20px;
   cursor: pointer;
   font-family: 'Encode Sans Condensed', sans-serif;
-  margin: 0 0 0 10px;
   border: none;
   border-radius: 6px;
   background-color: #7289DA;
@@ -280,12 +280,12 @@ input::placeholder {
 .log span:nth-child(1){
   margin: 0 15px 0 0;
 }
-.log_err {
-  color: #f44747;
-}
-.log_succ {
-  color: #039403;
-}
-.log_msg {
+.log_warn {
   color: #e6cd2d;
+}
+.log_err {
+  color: #ec1c1c;
+}
+.tx_id {
+  color: chartreuse;
 }
