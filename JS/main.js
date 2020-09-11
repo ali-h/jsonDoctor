@@ -233,6 +233,9 @@ $(window).bind("load", function() {
         }
         updateJson(null, JSON.stringify(newJson, null, "  "), null)
       })
+      $("#rpc_server").change(function() {
+        log(0, "rpc_server set to " + $(this).val())
+      })
       $("#use_keychain").change(function() {
         if ($(this).val() == "true") {
           try {
