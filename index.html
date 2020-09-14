@@ -24,15 +24,16 @@
           <span class="logo logo__large">doctor</span>
         </div>
         <div id="nav">
-          <span class="nav_b nav_selected">boradcast</span>
+          <span class="nav_b nav_selected" nav="true" pg_num="1">broadcast</span>
           <span class="nav_b divider">|</span>
-          <span class="nav_b">stream</span>
+          <span class="nav_b" nav="true" pg_num="2">stream</span>
           <span class="nav_b divider">|</span>
-          <span class="nav_b">about</span>
+          <span class="nav_b" nav="true" pg_num="3">about</span>
         </div>
       </div>
+      <!-- Boradcast Page -->
       <div class="body_app hidden" id="p__broadcast">
-        <div id="p__broadcast_wrapper">
+        <div class="p__wrapper">
           <div id="body__forum">
             <span class="code_span">
               <span class="m">hive</span>
@@ -155,6 +156,16 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <!-- Stream Page -->
+      <div class="body_app hidden" id="p__stream">
+        <div class="p__wrapper">
+          <div id="stream_options">
+            <button class="button_g">Start Stream</button>
+            <button class="button_g">Pause Stream</button>
+            <button class="button_g">Clear Stream</button>
           </div>
         </div>
       </div>
