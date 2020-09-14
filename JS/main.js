@@ -4,6 +4,10 @@ $(window).bind("load", function() {
   // navigation
   $(".nav_b[nav=true]").click(function() {
     page_num = $(this).attr("pg_num")
+    $(".nav_b").each(function() {
+      $(this).removeClass("nav_selected")
+    })
+    $(this).addClass("nav_selected")
     getPages()
   })
 
