@@ -41,7 +41,7 @@ $(window).bind("load", function() {
         if(status == 0) {
           css_class = "log_warn"
           if(typeof(msg) == 'object') {
-            msg = msg.msg + ' <a class="tx_id" target="_blank" href="https://hiveblocks.com/tx/' + msg.tx_id + '">' + msg.tx_id.substr(0, 8) + '</a>'
+            msg = msg.msg + ' <a class="tx_id" target="_blank" href="https://hiveblocks.com/tx/' + msg.tx_id + '">' + msg.tx_id.substr(0, 8) + '...</a>'
           }
         }
         else if(status == 1) {
@@ -234,6 +234,7 @@ $(window).bind("load", function() {
         updateJson(null, JSON.stringify(newJson, null, "  "), null)
       })
       $("#rpc_server").change(function() {
+        hive.api.setOptions({ url: $(this).val() })
         log(0, "rpc_server set to " + $(this).val())
       })
       $("#use_keychain").change(function() {
@@ -288,6 +289,7 @@ $(window).bind("load", function() {
       } catch(err) {
         log(1, "ERR: hive_keychain handshake failed.")
       }
+      hive.api.setOptions({ url: 'https://anyx.io/' })
     }
     else if (page_num == 2) {
 
