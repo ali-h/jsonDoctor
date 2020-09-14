@@ -49,13 +49,13 @@ body, html {
   padding: 10px;
   display: flex;
 }
-#p__broadcast_wrapper {
+.p__wrapper {
   flex-basis: 100%;
   display: flex;
   border: #1e1e1e;
   border-radius: 6px;
   background-color: #2C2F33;
-  padding: 0 5px;
+  padding: 5px;
 }
 /* header components */
 #logo_wrapper{
@@ -63,7 +63,6 @@ body, html {
   margin: 0 20px 0 0;
 }
 .logo{
-  cursor: pointer;
   font-size: 26px;
   padding: 5px 15px;
 }
@@ -288,4 +287,23 @@ input::placeholder {
 }
 .tx_id {
   color: chartreuse;
+}
+#stream_options {
+  display: flex;
+  width: 100%;
+  align-self: flex-start;
+  justify-content: space-between;
+} 
+#stream_options .input_d {
+  width: 250px;
+  flex-grow: 2;
+  margin: 0 5px;
+}
+#stream_buttons {
+  display: flex;
+  justify-content: center;
+}
+#stream_buttons .button_g, #stream_buttons .select_normal {
+  margin: 0 5px;
+  white-space: nowrap;
 }

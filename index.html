@@ -163,9 +163,18 @@
       <div class="body_app hidden" id="p__stream">
         <div class="p__wrapper">
           <div id="stream_options">
-            <button class="button_g">Start Stream</button>
-            <button class="button_g">Pause Stream</button>
-            <button class="button_g">Clear Stream</button>
+            <input id="json_id_stream" class="input_d s" placeholder="ID"/>
+            <div id="stream_buttons">
+              <button class="button_g" disabled>API</button>
+              <select class="select_normal" id="rpc_server">
+                <option value="https://anyx.io/">anyx.io</option>
+                <option value="https://api.hive.blog/">api.hive.blog</option>
+                <option value="https://api.deathwing.me/">api.deathwing.me</option>
+              </select>
+              <button class="button_g">Start Stream</button>
+              <button class="button_g">Pause Stream</button>
+              <button class="button_g">Clear Log</button>
+            </div>
           </div>
         </div>
       </div>
