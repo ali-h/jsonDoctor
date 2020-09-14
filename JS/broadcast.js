@@ -33,9 +33,8 @@ const broadcast = function(data, callback) {
         data.json,
         "Broadcasting through Json Doctor",
         function(response) {
-          console.log(response)
           if(response.success == false) {
-            callback(1, "ERR: " + response.message.toLowerCase())
+            callback(1, response.message.toLowerCase())
           }
           else if(response.success == true) {
             callback(0, {
@@ -48,7 +47,23 @@ const broadcast = function(data, callback) {
       )
     }
     else {
-      
+      hive.broadcast.customJson(
+        data.private_key,
+        (data.required_auth_type == "active") ? [data.username] : [],
+        (data.required_auth_type == "posting") ? [data.username] : [],
+        data.json_id,
+        data.json,
+        function(err, result) {
+          if(err) {
+            callback(1, err.toString())
+            return
+          }
+          callback(0, {
+            msg: "transaction successfull.",
+            tx_id: result.id
+          })
+        }
+      )
     }
   }
 }
