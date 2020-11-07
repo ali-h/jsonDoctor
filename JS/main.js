@@ -118,7 +118,7 @@ $(window).bind("load", function() {
       json_id: "ssc-mainnet-hive",
       json: {"contractName":"","contractAction":"","contractPayload":{}},
       required_auth_type: "active",
-      options: ["Transfer", "Stake", "Unstake", "Issue", "Buy", "Sell", "Cancel"]
+      options: ["Transfer", "Stake", "Unstake", "Issue", "Buy", "Sell", "Cancel", "NFT Buy", "NFT Sell"]
     },
     "Blog Operations" : {
       name: "Blog Operations",
@@ -193,6 +193,26 @@ $(window).bind("load", function() {
           else
             contractAction = contractAction[0].toLowerCase()
           switch(selection) {
+            case "NFT Buy":
+              contractName = "nftmarket"
+              contractAction = "buy"
+              contractPayload = {
+                "symbol": "",
+                "nfts": [],
+                "marketAccount": "ali-h"
+              }
+              break;
+            case "NFT Sell":
+              contractName = "nftmarket"
+              contractAction = "sell"
+              contractPayload = {
+                "symbol": "",
+                "nfts": [],
+                "price": "",
+                "priceSymbol": "",
+                "fee": 0
+              }
+              break;
             case "Buy":
             case "Sell":
               contractName = "market"
