@@ -267,6 +267,7 @@ input::placeholder {
   padding: 10px;
   font-size: 13.8px;
   overflow: auto;
+  user-select: text;
 }
 .log {
   display: flex;

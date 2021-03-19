@@ -39,7 +39,8 @@ const broadcast = function(data, callback) {
           else if(response.success == true) {
             callback(0, {
               msg: "transaction successfull.",
-              tx_id: response.result.id
+              tx_id: response.result.id,
+              block_num: response.result.block_num
             })
           }
         },
@@ -60,7 +61,8 @@ const broadcast = function(data, callback) {
           }
           callback(0, {
             msg: "transaction successfull.",
-            tx_id: result.id
+            tx_id: result.id,
+            block_num: result.block_num
           })
         }
       )
