@@ -310,3 +310,9 @@ input::placeholder {
   margin: 0 5px;
   white-space: nowrap;
 }
+#counter-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}

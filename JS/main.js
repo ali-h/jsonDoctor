@@ -1,5 +1,45 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+import {getDatabase, ref, set , child, get} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCCNW0eGTeMJlLgvJHH1GNMxscbtZ2KVcw",
+  authDomain: "static-counters.firebaseapp.com",
+  projectId: "static-counters",
+  storageBucket: "static-counters.appspot.com",
+  messagingSenderId: "195356836287",
+  appId: "1:195356836287:web:0dacbdb70895e02263610a"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase();
+var lastCount = 0;
+
+function count() {
+  set(ref(db, "jsonDoctor"), {
+    count: ++lastCount
+  })
+  .then(updateCount)
+  .catch((err) => {console.log(err)});
+}
+
+function updateCount() {
+  get(child(ref(db), "jsonDoctor")).then((snapshot) => {
+    if (snapshot.exists()) {
+      lastCount = snapshot.val().count;
+      $("#count").text(lastCount);
+    }
+  });
+}
+
 // on page ready
 $(window).bind("load", function() {
+  updateCount();
 
   // navigation
   $(".nav_b[nav=true]").click(function() {
@@ -146,7 +186,7 @@ $(window).bind("load", function() {
     // adding sub-templates
     if(selection !== "X" && this_template.options.length > 0) {
       sub_templates.html("")
-      for(i in this_template.options) {
+      for(let i in this_template.options) {
         sub_templates.append(`<button class="select_normal sub_template_button tbs">` + this_template.options[i] + `</button>`)
       }
       sub_templates.append(`<button class="select_normal sub_template_button tbs crossb">X</button>`)
@@ -165,7 +205,7 @@ $(window).bind("load", function() {
     }
 
     if(selection !== "X") {
-      template = JSON.stringify(this_template.json, null, "  ")
+      var template = JSON.stringify(this_template.json, null, "  ")
       updateJson(this_template.json_id, template, this_template.required_auth_type)
     }
     else
@@ -321,6 +361,7 @@ $(window).bind("load", function() {
     broadcast(data, function(status, res) {
       log(status, res)
       $("#broadcast").removeAttr("disabled")
+      count()
     })
   })
 

@@ -13,7 +13,7 @@
     <script src="JS/libs/codejar.js"></script>
     <script src="JS/stream.js"></script>
     <script src="JS/broadcast.js"></script>
-    <script src="JS/main.js"></script>
+    <script src="JS/main.js" type="module"></script>
   </head>
   <body>
     <div id="app" class="hidden">
@@ -23,6 +23,11 @@
           <span class="logo logo__large">doctor</span>
         </div>
         <div id="nav">
+          <div id="counter-div">
+            <span>tx count</span>
+            <span id="count">0</span>
+          </div>
+          <span class="nav_b divider">|</span>
           <span class="nav_b nav_selected" nav="true" pg_num="1">broadcast</span>
           <!-- <span class="nav_b divider">|</span>
           <span class="nav_b" nav="true" pg_num="2">stream</span>
