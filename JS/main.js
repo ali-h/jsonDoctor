@@ -117,21 +117,21 @@ $(window).bind("load", function() {
       name: "Hive Engine",
       json_id: "ssc-mainnet-hive",
       json: {"contractName":"","contractAction":"","contractPayload":{}},
-      required_auth_type: "active",
+      required_auth_type: "Active",
       options: ["Transfer", "Stake", "Unstake", "Issue", "Buy", "Sell", "Cancel", "NFT Buy", "NFT Sell"]
     },
     "Blog Operations" : {
       name: "Blog Operations",
       json_id: "follow",
       json: ["follow",{"follower":"","following":"","what":[""]}],
-      required_auth_type: "posting",
+      required_auth_type: "Posting",
       options: ["Follow", "Unfollow", "Mute"]
     },
     "Scot Claim Token" : {
       name: "Scot Claim Token",
       json_id: "scot-claim-token",
       json: [{"symbol":""}],
-      required_auth_type: "posting",
+      required_auth_type: "Posting",
       options: ["NEOXAG","PAL","LEO","CCC"]
     }
   }
@@ -169,7 +169,7 @@ $(window).bind("load", function() {
       updateJson(this_template.json_id, template, this_template.required_auth_type)
     }
     else
-      updateJson("", null, "posting")
+      updateJson("", null, "Posting")
 
     // adjust height again if body resized
     var html = $("#broadcast_log").html()
