@@ -141,7 +141,7 @@ input::placeholder {
 }
 #editor {
   position: relative;
-  min-height: 180px;
+  min-height: 130px;
   font-family: "Courier New", monospace;
   font-weight: 400;
   font-size: 18px;
