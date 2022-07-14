@@ -76,7 +76,7 @@ $(window).bind("load", function() {
     if(status == 0) {
       css_class = "log_warn"
       if(typeof(msg) == 'object') {
-        msg = msg.msg + ' <a class="tx_id" target="_blank" href="https://hiveblocks.com/tx/' + msg.tx_id + '">' + msg.tx_id + '</a> Block# ' + msg.block_num;
+        msg = `${msg.msg} <a class="tx_id" target="_blank" href="https://hive.ausbit.dev/tx/${msg.tx_id}">${msg.tx_id}</a>${(msg.block_num !== undefined) ? ` Block# ${msg.block_num}` : ""}`;
       }
     }
     else if(status == 1) {

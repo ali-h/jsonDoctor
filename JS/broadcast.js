@@ -40,7 +40,7 @@ const broadcast = function(data, callback) {
             callback(0, {
               msg: "transaction successfull.",
               tx_id: response.result.id,
-              block_num: response.result.block_num
+              // block_num: response.block_num
             })
           }
         },
