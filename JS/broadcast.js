@@ -50,8 +50,8 @@ const broadcast = function(data, callback) {
     else {
       hive.broadcast.customJson(
         data.private_key,
-        (data.required_auth_type == "active") ? [data.username] : [],
-        (data.required_auth_type == "posting") ? [data.username] : [],
+        (data.required_auth_type == "Active") ? [data.username] : [],
+        (data.required_auth_type == "Posting") ? [data.username] : [],
         data.json_id,
         data.json,
         function(err, result) {
